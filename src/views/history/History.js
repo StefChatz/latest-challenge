@@ -1,31 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchHistoryList,
-  selectHistoryList,
-  selectPage,
-} from "../../models/historyList";
+import { fetchHistoryList, selectHistory } from "../../models/historyList";
 
 export const History = () => {
   const dispatch = useDispatch();
-  const { historyList } = useSelector(selectHistoryList);
+  const { historyList, status, page } = useSelector(selectHistory);
+
+  const isAppLoading = status === "loading";
   // const { page } = useSelector(selectPage);
   // eslint-disable-next-line no-unused-vars
-  const [pageNumber, setPageNumber] = useState(1);
 
   const fetchMoreData = () => {
-    dispatch(fetchHistoryList({ pageNumber: page, pageItemsLimit: 1 }));
-    // setPageNumber(pageNumber + 1);
+    if (isAppLoading) return;
+    dispatch(fetchHistoryList({ pageNumber: page, pageItemsLimit: 10 }));
   };
 
-  // dispatch(fetchHistoryList({ pageNumber: 1, pageItemsLimit: 10 }));
+  console.log(">>>>", isAppLoading);
 
   return (
     <div>
       <InfiniteScroll
+        initialLoad
         loadMore={fetchMoreData}
-        hasMore
+        hasMore={!isAppLoading}
         loader={
           <div className="loader" key={0}>
             Loading ...
@@ -38,13 +36,12 @@ export const History = () => {
             /* eslint-disable-next-line react/no-array-index-key */
             key={id + index}
             style={{
-              height: 30,
+              height: 150,
               border: "1px solid green",
               margin: 6,
               padding: 8,
             }}
           >
-            {console.log(">>>>", dropoff)}
             {dropoff}
           </div>
         ))}

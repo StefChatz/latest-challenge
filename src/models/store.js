@@ -3,6 +3,6 @@ import { historyListReducer } from "./historyList";
 
 export const store = configureStore({
   reducer: {
-    historyList: historyListReducer,
+    history: historyListReducer,
   },
 });

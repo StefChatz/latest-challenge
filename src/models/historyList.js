@@ -34,8 +34,6 @@ const { reducer } = createSlice({
   },
 });
 
-export const selectHistoryList = (state) => state.historyList;
-export const selectPage = (state) => state.page;
-export const selectHistoryListCallStatus = (state) => state.status;
+export const selectHistory = (state) => state.history;
 
 export { reducer as historyListReducer };
