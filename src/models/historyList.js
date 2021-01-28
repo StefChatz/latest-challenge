@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { isEmpty } from "lodash-es";
 import { ridesHistoryUrl, client } from "../api";
 
 const initialState = {
@@ -6,6 +7,7 @@ const initialState = {
   page: 1,
   status: "idle",
   error: null,
+  hasMoreItems: true,
 };
 
 export const fetchHistoryList = createAsyncThunk(
@@ -26,6 +28,7 @@ const { reducer } = createSlice({
       state.status = "succeeded";
       state.historyList = state.historyList.concat(action.payload);
       state.page += 1;
+      state.hasMoreItems = !isEmpty(action.payload);
     },
     [fetchHistoryList.rejected]: (state, action) => {
       state.status = "failed";

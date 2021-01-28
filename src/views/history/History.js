@@ -5,25 +5,21 @@ import { fetchHistoryList, selectHistory } from "../../models/historyList";
 
 export const History = () => {
   const dispatch = useDispatch();
-  const { historyList, status, page } = useSelector(selectHistory);
+  const { historyList, status, page: pageNumber, hasMoreItems } = useSelector(
+    selectHistory
+  );
 
   const isAppLoading = status === "loading";
-  // const { page } = useSelector(selectPage);
-  // eslint-disable-next-line no-unused-vars
 
   const fetchMoreData = () => {
-    if (isAppLoading) return;
-    dispatch(fetchHistoryList({ pageNumber: page, pageItemsLimit: 10 }));
+    dispatch(fetchHistoryList({ pageNumber, pageItemsLimit: 10 }));
   };
-
-  console.log(">>>>", isAppLoading);
 
   return (
     <div>
       <InfiniteScroll
-        initialLoad
         loadMore={fetchMoreData}
-        hasMore={!isAppLoading}
+        hasMore={!isAppLoading && hasMoreItems}
         loader={
           <div className="loader" key={0}>
             Loading ...
