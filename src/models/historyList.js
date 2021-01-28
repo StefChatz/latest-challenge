@@ -3,6 +3,7 @@ import { ridesHistoryUrl, client } from "../api";
 
 const initialState = {
   historyList: [],
+  page: 1,
   status: "idle",
   error: null,
 };
@@ -24,6 +25,7 @@ const { reducer } = createSlice({
     [fetchHistoryList.fulfilled]: (state, action) => {
       state.status = "succeeded";
       state.historyList = state.historyList.concat(action.payload);
+      state.page += 1;
     },
     [fetchHistoryList.rejected]: (state, action) => {
       state.status = "failed";
@@ -33,6 +35,7 @@ const { reducer } = createSlice({
 });
 
 export const selectHistoryList = (state) => state.historyList;
+export const selectPage = (state) => state.page;
 export const selectHistoryListCallStatus = (state) => state.status;
 
 export { reducer as historyListReducer };
