@@ -3,7 +3,7 @@ import { rideDetailsUrl, commentSubmissionUrl, client } from "../api";
 
 const initialState = {
   rideDetails: {},
-  selectedRide: null,
+  selectedRide: 1,
   status: "idle",
   error: null,
 };
@@ -44,6 +44,6 @@ const { reducer, actions } = createSlice({
 
 export const { selectRide } = actions;
 
-export const selectRideDetails = (state) => state.rideDetails;
+export const selectRideDetails = (state) => state.details;
 
 export { reducer as rideDetailsReducer };
