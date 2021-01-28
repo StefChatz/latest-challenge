@@ -1,7 +1,7 @@
 import React from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchHistoryList, selectHistory } from "../../models/historyList";
+import { fetchHistoryList, selectHistory, selectRide } from "../../models";
 
 export const History = () => {
   const dispatch = useDispatch();
@@ -29,7 +29,6 @@ export const History = () => {
       >
         {historyList.map(({ id, ride: { dropoff } }, index) => (
           <div
-            /* eslint-disable-next-line react/no-array-index-key */
             key={id + index}
             style={{
               height: 150,
@@ -39,6 +38,7 @@ export const History = () => {
             }}
           >
             {dropoff}
+            <button onClick={() => dispatch(selectRide(id))}> click </button>
           </div>
         ))}
       </InfiniteScroll>

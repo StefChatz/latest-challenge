@@ -32,5 +32,6 @@ module.exports = {
     "no-return-await": 0,
     "react/forbid-prop-types": 0,
     camelcase: 0,
+    "react/no-array-index-key": 0,
   },
 };
