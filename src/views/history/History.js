@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroller";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchHistoryList,
+  selectHistoryList,
+  selectPage,
+} from "../../models/historyList";
 
 export const History = () => {
-  const [hasMore, setHasMore] = useState(true);
-  const [items, setItems] = useState(Array.from({ length: 20 }));
+  const dispatch = useDispatch();
+  const { historyList } = useSelector(selectHistoryList);
+  // const { page } = useSelector(selectPage);
+  // eslint-disable-next-line no-unused-vars
+  const [pageNumber, setPageNumber] = useState(1);
 
   const fetchMoreData = () => {
-    if (items.length >= 1500) {
-      setHasMore(false);
-      return;
-    }
-    // a fake async api call like which sends
-    // 20 more records in .5 secs
-    setTimeout(() => {
-      setItems(items.concat(Array.from({ length: 20 })));
-    }, 1500);
+    dispatch(fetchHistoryList({ pageNumber: page, pageItemsLimit: 1 }));
+    // setPageNumber(pageNumber + 1);
   };
 
   // dispatch(fetchHistoryList({ pageNumber: 1, pageItemsLimit: 10 }));
@@ -22,9 +24,8 @@ export const History = () => {
   return (
     <div>
       <InfiniteScroll
-        pageStart={0}
         loadMore={fetchMoreData}
-        hasMore={hasMore}
+        hasMore
         loader={
           <div className="loader" key={0}>
             Loading ...
@@ -32,10 +33,10 @@ export const History = () => {
         }
         useWindow
       >
-        {items.map((i, index) => (
+        {historyList.map(({ id, ride: { dropoff } }, index) => (
           <div
             /* eslint-disable-next-line react/no-array-index-key */
-            key={index}
+            key={id + index}
             style={{
               height: 30,
               border: "1px solid green",
@@ -43,7 +44,8 @@ export const History = () => {
               padding: 8,
             }}
           >
-            {index}
+            {console.log(">>>>", dropoff)}
+            {dropoff}
           </div>
         ))}
       </InfiniteScroll>
