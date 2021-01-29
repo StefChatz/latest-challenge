@@ -38,6 +38,16 @@ const { reducer } = createSlice({
       state.status = "failed";
       state.error = action.payload;
     },
+    [postComment.pending]: (state) => {
+      state.status = "loading";
+    },
+    [postComment.fulfilled]: (state) => {
+      state.status = "succeeded";
+    },
+    [postComment.rejected]: (state, action) => {
+      state.status = "failed";
+      state.error = action.payload;
+    },
   },
 });
 
