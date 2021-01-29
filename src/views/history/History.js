@@ -1,7 +1,8 @@
 import React from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchHistoryList, selectHistory, selectRide } from "../../models";
+import { Link } from "react-router-dom";
+import { fetchHistoryList, selectHistory } from "../../models";
 
 export const History = () => {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ export const History = () => {
             }}
           >
             {dropoff}
-            <button onClick={() => dispatch(selectRide(id))}> click </button>
+            <Link to={`/details/${id}`}>click</Link>
           </div>
         ))}
       </InfiniteScroll>

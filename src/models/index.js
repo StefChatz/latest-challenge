@@ -6,4 +6,4 @@ export {
   selectHistory,
 } from "./historyList";
 
-export { selectRide, selectRideDetails, fetchRideDetails } from "./rideDetails";
+export { selectRideDetails, fetchRideDetails } from "./rideDetails";

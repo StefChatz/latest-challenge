@@ -17,7 +17,7 @@ export const App = () => (
           <Redirect to="/history" />
         </Route>
         <Route exact path="/history" component={History} />
-        <Route exact path="/details" component={Details} />
+        <Route exact path="/details/:id" component={Details} />
       </Switch>
     </Router>
   </div>

@@ -3,7 +3,6 @@ import { rideDetailsUrl, commentSubmissionUrl, client } from "../api";
 
 const initialState = {
   rideDetails: {},
-  selectedRide: 1,
   status: "idle",
   error: null,
 };
@@ -19,14 +18,10 @@ export const postComment = createAsyncThunk(
     await client.post(commentSubmissionUrl, { rating, message })
 );
 
-const { reducer, actions } = createSlice({
+const { reducer } = createSlice({
   name: "rideDetails",
   initialState,
-  reducers: {
-    selectRide(state, action) {
-      state.selectedRide = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: {
     [fetchRideDetails.pending]: (state) => {
       state.status = "loading";
@@ -41,8 +36,6 @@ const { reducer, actions } = createSlice({
     },
   },
 });
-
-export const { selectRide } = actions;
 
 export const selectRideDetails = (state) => state.details;
 
