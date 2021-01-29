@@ -17,32 +17,30 @@ export const History = () => {
   };
 
   return (
-    <div>
-      <InfiniteScroll
-        loadMore={fetchMoreData}
-        hasMore={!isAppLoading && hasMoreItems}
-        loader={
-          <div className="loader" key={0}>
-            Loading ...
-          </div>
-        }
-        useWindow
-      >
-        {historyList.map(({ id, ride: { dropoff } }, index) => (
-          <div
-            key={id + index}
-            style={{
-              height: 150,
-              border: "1px solid green",
-              margin: 6,
-              padding: 8,
-            }}
-          >
-            {dropoff}
-            <Link to={`/details/${id}`}>click</Link>
-          </div>
-        ))}
-      </InfiniteScroll>
-    </div>
+    <InfiniteScroll
+      loadMore={fetchMoreData}
+      hasMore={!isAppLoading && hasMoreItems}
+      loader={
+        <div className="loader" key={0}>
+          Loading ...
+        </div>
+      }
+      useWindow
+    >
+      {historyList.map(({ id, ride: { dropoff } }, index) => (
+        <div
+          key={id + index}
+          style={{
+            height: 150,
+            border: "1px solid green",
+            margin: 6,
+            padding: 8,
+          }}
+        >
+          {dropoff}
+          <Link to={`/details/${id}`}>click</Link>
+        </div>
+      ))}
+    </InfiniteScroll>
   );
 };

@@ -1,0 +1,8 @@
+.AppLayout {
+    background-color: #000028;
+    color: rgb(35, 210, 170);
+
+    display: grid;
+    grid-template-areas: "header"
+    "main";
+}

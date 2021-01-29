@@ -5,12 +5,14 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import { AppLayout, Header } from "../components";
 
-import { Details, History } from "./views";
+import { Details, History } from "../views";
 import "./App.css";
 
 export const App = () => (
-  <div className="App">
+  <AppLayout className="App">
+    <Header />
     <Router>
       <Switch>
         <Route exact path="/">
@@ -20,5 +22,5 @@ export const App = () => (
         <Route exact path="/details/:id" component={Details} />
       </Switch>
     </Router>
-  </div>
+  </AppLayout>
 );
