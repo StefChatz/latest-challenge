@@ -1,7 +1,7 @@
 import React from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { HistoryCard } from "../../components";
 import { fetchHistoryList, selectHistory } from "../../models";
 
 export const History = () => {
@@ -26,20 +26,18 @@ export const History = () => {
         </div>
       }
     >
-      {historyList.map(({ id, ride: { dropoff } }, index) => (
-        <div
-          key={id + index}
-          style={{
-            height: 150,
-            border: "1px solid green",
-            margin: 6,
-            padding: 8,
-          }}
-        >
-          {dropoff}
-          <Link to={`/details/${id}`}>click</Link>
-        </div>
-      ))}
+      {historyList.map(
+        ({ id, ride: { dropoff, created_at, pickup, total } }, index) => (
+          <HistoryCard
+            key={id + index}
+            id={id}
+            dropoff={dropoff}
+            createdAt={created_at}
+            pickup={pickup}
+            total={total}
+          />
+        )
+      )}
     </InfiniteScroll>
   );
 };
