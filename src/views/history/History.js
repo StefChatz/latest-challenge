@@ -25,7 +25,6 @@ export const History = () => {
           Loading ...
         </div>
       }
-      useWindow
     >
       {historyList.map(({ id, ride: { dropoff } }, index) => (
         <div
