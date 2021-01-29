@@ -16,10 +16,17 @@
     background-color: #000028;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
+    padding: 8px;
+
+    display: flex;
+    justify-content: space-between;
 }
 
 .body {
     color: #000028;
     background-color: rgb(35, 210, 170);
     border-bottom-right-radius: 12px;
-    border-bottom-left-radius: 12px;}
+    border-bottom-left-radius: 12px;
+    padding: 8px;
+
+}
