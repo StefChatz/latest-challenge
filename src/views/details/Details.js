@@ -1,21 +1,24 @@
-import { map } from "lodash-es";
+import { find, map } from "lodash-es";
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import PropTypes from "prop-types";
-import { fetchRideDetails, postComment } from "../../models";
+import { fetchRideDetails, postComment, selectRideDetails } from "../../models";
 
 export const Details = ({ match }) => {
   const dispatch = useDispatch();
+  const { rideDetailsList } = useSelector(selectRideDetails);
   const { register, handleSubmit, watch } = useForm();
 
-  const id = match?.params?.id;
+  const id = parseInt(match?.params?.id, 10);
   const isUnderRated = watch("rating") > 0 && watch("rating") <= 2;
+  const { ride } = find(rideDetailsList, ["id", id]) || {};
 
   const onSubmit = (data) => dispatch(postComment(data));
 
   useEffect(() => {
-    dispatch(fetchRideDetails(id));
+    if (ride) return;
+    dispatch(fetchRideDetails({ id }));
   }, [id]);
 
   const optionsConfig = {
@@ -28,23 +31,26 @@ export const Details = ({ match }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <select
-        name="rating"
-        ref={register({
-          min: 1,
-        })}
-        defaultValue={0}
-      >
-        {map(optionsConfig, (value, key) => (
-          <option key={key + value} value={key}>
-            {value}
-          </option>
-        ))}
-      </select>
-      {isUnderRated && <input name="comment" ref={register} />}
-      <input type="submit" />
-    </form>
+    <>
+      {ride?.dropoff}
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <select
+          name="rating"
+          ref={register({
+            min: 1,
+          })}
+          defaultValue={0}
+        >
+          {map(optionsConfig, (value, key) => (
+            <option key={key + value} value={key}>
+              {value}
+            </option>
+          ))}
+        </select>
+        {isUnderRated && <input name="comment" ref={register} />}
+        <input type="submit" />
+      </form>
+    </>
   );
 };
 

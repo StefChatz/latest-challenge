@@ -1,15 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { uniqBy } from "lodash-es";
 import { rideDetailsUrl, commentSubmissionUrl, client } from "../api";
 
 const initialState = {
-  rideDetails: {},
+  rideDetailsList: [],
   status: "idle",
   error: null,
 };
 
 export const fetchRideDetails = createAsyncThunk(
   "rideDetails/fetchRideDetails",
-  async (id) => await client.get(rideDetailsUrl(id))
+  async ({ id }) => await client.get(rideDetailsUrl(id))
 );
 
 export const postComment = createAsyncThunk(
@@ -28,7 +29,10 @@ const { reducer } = createSlice({
     },
     [fetchRideDetails.fulfilled]: (state, action) => {
       state.status = "succeeded";
-      state.rideDetails = action.payload;
+      state.rideDetailsList = uniqBy(
+        [action.payload, ...state.rideDetailsList],
+        "id"
+      );
     },
     [fetchRideDetails.rejected]: (state, action) => {
       state.status = "failed";

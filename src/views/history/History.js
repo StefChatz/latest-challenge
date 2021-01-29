@@ -46,7 +46,3 @@ export const History = () => {
     </div>
   );
 };
-
-History.propTypes = {};
-
-History.defaultProps = {};
