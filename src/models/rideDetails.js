@@ -14,8 +14,8 @@ export const fetchRideDetails = createAsyncThunk(
 
 export const postComment = createAsyncThunk(
   "rideDetails/postComment",
-  async ({ rating, message }) =>
-    await client.post(commentSubmissionUrl, { rating, message })
+  async ({ rating, comment }) =>
+    await client.post(commentSubmissionUrl, { rating, comment })
 );
 
 const { reducer } = createSlice({

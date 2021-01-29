@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import PropTypes from "prop-types";
-import { fetchRideDetails } from "../../models";
+import { fetchRideDetails, postComment } from "../../models";
 
 export const Details = ({ match }) => {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ export const Details = ({ match }) => {
   const id = match?.params?.id;
   const isUnderRated = watch("rating") > 0 && watch("rating") <= 2;
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => dispatch(postComment(data));
 
   useEffect(() => {
     dispatch(fetchRideDetails(id));
