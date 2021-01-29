@@ -5,11 +5,14 @@ import { Link } from "react-router-dom";
 
 export const HistoryCard = ({ id, dropoff, createdAt, pickup, total }) => (
   <Link to={`/details/${id}`} className="HistoryCard">
-
-    {dropoff}
-    {createdAt}
-    {pickup}
-    {total}
+    <div className="header">
+      {total}
+      {createdAt}
+    </div>
+    <div className="body">
+      {pickup}
+      {dropoff}
+    </div>
   </Link>
 );
 
