@@ -1,3 +1,4 @@
+import { split } from "lodash-es";
 import PropTypes from "prop-types";
 import React from "react";
 import moment from "moment";
@@ -7,7 +8,8 @@ import { Link } from "react-router-dom";
 
 export const HistoryCard = ({ id, dropoff, createdAt, pickup, total }) => {
   const date = moment(createdAt).format("d MMMM YYYY - H:mm");
-  console.log("date", date);
+  const price = split(total, "/")[1]?.trim();
+  const formatedPrice = new Intl.NumberFormat().format(price).replace(".", ",");
 
   return (
     <Link to={`/details/${id}`} className="HistoryCard">
@@ -15,7 +17,7 @@ export const HistoryCard = ({ id, dropoff, createdAt, pickup, total }) => {
         {createdAt && <div>{date}</div>}
         {total && (
           <div>
-            <strong>{`Total fare:${total}`}</strong>
+            <strong>{`Total fare: €${formatedPrice}`}</strong>
           </div>
         )}
       </div>
