@@ -6,7 +6,7 @@ import "./HistoryCard.css";
 
 export const HistoryCard = ({ id, dropoff, createdAt, pickup, total }) => (
   <Link to={`/details/${id}`} className="HistoryCard">
-    <div className="header">
+    <div className="HistoryCard__header">
       {createdAt && <div>{dateFormater(createdAt)}</div>}
       {total && (
         <div>
@@ -14,7 +14,7 @@ export const HistoryCard = ({ id, dropoff, createdAt, pickup, total }) => (
         </div>
       )}
     </div>
-    <div className="body">
+    <div className="HistoryCard__body">
       {pickup && <div>{pickup}</div>}
       {dropoff && <div>{dropoff}</div>}
     </div>
