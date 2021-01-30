@@ -2,8 +2,10 @@ import { find } from "lodash-es";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import { DetailsCard } from "../../components";
 import { fetchRideDetails, selectRideDetails } from "../../models";
+import "./Details.css";
 
 export const Details = ({ match }) => {
   const dispatch = useDispatch();
@@ -17,7 +19,14 @@ export const Details = ({ match }) => {
     dispatch(fetchRideDetails({ id }));
   }, [id]);
 
-  return <>{ride && <DetailsCard ride={ride} />}</>;
+  return (
+    <div className="Details">
+      <Link to="/" className="Details__back">
+        <strong>Back to history</strong>
+      </Link>
+      {ride && <DetailsCard ride={ride} />}
+    </div>
+  );
 };
 
 Details.propTypes = {
