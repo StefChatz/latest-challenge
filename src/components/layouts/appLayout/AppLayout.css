@@ -3,6 +3,7 @@
     color: rgb(35, 210, 170);
 
     display: grid;
+    grid-template-rows: 56px minmax(calc(100vh - 56px), auto);
     grid-template-areas: "header"
     "main";
 }
