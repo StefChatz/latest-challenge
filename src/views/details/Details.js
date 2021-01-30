@@ -17,7 +17,7 @@ export const Details = ({ match }) => {
     dispatch(fetchRideDetails({ id }));
   }, [id]);
 
-  return <DetailsCard ride={ride} />;
+  return <>{ride && <DetailsCard ride={ride} />}</>;
 };
 
 Details.propTypes = {
