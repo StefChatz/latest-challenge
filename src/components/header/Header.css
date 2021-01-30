@@ -1,4 +1,6 @@
 .Header {
+    color: rgb(35, 210, 170);
+    background-color:#000028;
     grid-area: header;
     text-align: center;
     font-size: 40px;
