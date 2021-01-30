@@ -10,7 +10,7 @@ export const HistoryCard = ({ id, dropoff, createdAt, pickup, total }) => (
       {createdAt && <div>{dateFormater(createdAt)}</div>}
       {total && (
         <div>
-          <strong>{`Total fare: €${currencyFormater(total)}`}</strong>
+          <strong>{`Total fare: ${currencyFormater(total)}`}</strong>
         </div>
       )}
     </div>
