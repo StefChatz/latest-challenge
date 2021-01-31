@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import "./DetailsCard.css";
 import { postComment } from "../../models";
 import { currencyFormater, dateFormater } from "../../utils";
+import "./DetailsCard.css";
 
 export const DetailsCard = ({
   ride: { created_at, dropoff, map, total, pickup },
@@ -13,8 +13,9 @@ export const DetailsCard = ({
   const dispatch = useDispatch();
   const { register, handleSubmit, watch } = useForm();
 
-  const isUnderRated = watch("rating") > 0 && watch("rating") <= 2;
-
+  const selectValue = watch("rating");
+  const hasSelectedValue = selectValue > 0;
+  const isUnderRated = hasSelectedValue && selectValue <= 2;
   const onSubmit = (data) => dispatch(postComment(data));
 
   const optionsConfig = {
@@ -30,20 +31,24 @@ export const DetailsCard = ({
     <div className="DetailsCard">
       <div className="DetailsCard__header">{dateFormater(created_at)}</div>
       <div className="DetailsCard__info">
-        <div>{pickup}</div>
-        <div>{dropoff}</div>
-        <div>
+        <div className="DetailsCard__destinations">
+          <div>{pickup}</div>
+          <div>{dropoff}</div>
+        </div>
+        <div className="DetailsCard__fare">
           <strong>{`Total fare: ${currencyFormater(total)}`}</strong>
         </div>
         <div
           style={{ backgroundImage: `url(${map})` }}
           className="DetailsCard__map"
         />
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className="DetailsCard__form">
           <select
+            className="DetailsCard__select"
             name="rating"
             ref={register({
               min: 1,
+              required: true,
             })}
             defaultValue={0}
           >
@@ -53,8 +58,19 @@ export const DetailsCard = ({
               </option>
             ))}
           </select>
-          {isUnderRated && <input name="comment" ref={register} />}
-          <input type="submit" />
+          {isUnderRated && (
+            <input
+              className="DetailsCard__extra-input"
+              placeholder="Optional Comment"
+              name="comment"
+              ref={register}
+            />
+          )}
+          <input
+            className="DetailsCard__submit"
+            type="submit"
+            disabled={!hasSelectedValue}
+          />
         </form>
       </div>
     </div>
