@@ -1,16 +1,17 @@
-import { find } from "lodash-es";
+import { find, isEmpty } from "lodash-es";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { DetailsCard } from "../../components";
+import { DetailsCard, RatingCard } from "../../components";
 import { fetchRideDetails, selectRideDetails } from "../../models";
 import "./Details.css";
 
 export const Details = ({ match }) => {
   const dispatch = useDispatch();
-  const { rideDetailsList } = useSelector(selectRideDetails);
+  const { rideDetailsList, rating } = useSelector(selectRideDetails);
 
+  const hasRating = !isEmpty(rating);
   const id = parseInt(match?.params?.id, 10);
   const { ride } = find(rideDetailsList, ["id", id]) || {};
 
@@ -24,7 +25,13 @@ export const Details = ({ match }) => {
       <Link to="/" className="Details__back">
         <strong>Back to history</strong>
       </Link>
-      {ride && <DetailsCard ride={ride} />}
+      {hasRating ? (
+        <>
+          <RatingCard rating={rating} />
+        </>
+      ) : (
+        <>{ride && <DetailsCard ride={ride} />}</>
+      )}
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { rideDetailsUrl, commentSubmissionUrl, client } from "../api";
 
 const initialState = {
   rideDetailsList: [],
+  rating: {},
   status: "idle",
   error: null,
 };
