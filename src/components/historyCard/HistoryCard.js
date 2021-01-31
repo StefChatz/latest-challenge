@@ -17,8 +17,8 @@ export const HistoryCard = ({ id, dropoff, createdAt, pickup, total }) => (
     </div>
     <div className="HistoryCard__body">
       <div>
-        {pickup && <div>{pickup}</div>}
-        {dropoff && <div>{dropoff}</div>}
+        {pickup && <div>From: {pickup}</div>}
+        {dropoff && <div>To: {dropoff}</div>}
       </div>
       <img src={rightArrowPoint} alt="" className="HistoryCard__icon" />
     </div>
