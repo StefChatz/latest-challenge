@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "./AppLayout.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import './AppLayout.css';
 
 export const AppLayout = ({ children }) => (
   <div className="AppLayout">{children}</div>

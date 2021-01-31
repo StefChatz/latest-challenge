@@ -1,8 +1,8 @@
 export const client = async (endpoint, { body, ...customConfig } = {}) => {
-  const headers = { "Content-Type": "application/json" };
+  const headers = { 'Content-Type': 'application/json' };
 
   const config = {
-    method: body ? "POST" : "GET",
+    method: body ? 'POST' : 'GET',
     ...customConfig,
     headers: {
       ...headers,
@@ -27,8 +27,6 @@ export const client = async (endpoint, { body, ...customConfig } = {}) => {
   }
 };
 
-client.get = (endpoint, customConfig = {}) =>
-  client(endpoint, { ...customConfig, method: "GET" });
+client.get = (endpoint, customConfig = {}) => client(endpoint, { ...customConfig, method: 'GET' });
 
-client.post = (endpoint, body, customConfig = {}) =>
-  client(endpoint, { ...customConfig, body });
+client.post = (endpoint, body, customConfig = {}) => client(endpoint, { ...customConfig, body });

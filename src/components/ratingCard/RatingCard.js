@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "./RatingCard.css";
-import { star } from "../../static";
+import React from 'react';
+import PropTypes from 'prop-types';
+import './RatingCard.css';
+import { star } from '../../static';
 
 export const RatingCard = ({ rating: { rating, comment } }) => {
   const stars = [];

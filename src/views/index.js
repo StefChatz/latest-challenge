@@ -1,2 +1,2 @@
-export { History } from "./history";
-export { Details } from "./details";
+export { History } from './history';
+export { Details } from './details';

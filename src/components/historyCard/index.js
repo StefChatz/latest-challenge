@@ -1,1 +1,1 @@
-export { HistoryCard } from "./HistoryCard";
+export { HistoryCard } from './HistoryCard';

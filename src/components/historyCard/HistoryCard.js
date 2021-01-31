@@ -1,11 +1,13 @@
-import PropTypes from "prop-types";
-import React from "react";
-import { Link } from "react-router-dom";
-import { rightArrowPoint } from "../../static";
-import { currencyFormater, dateFormater } from "../../utils";
-import "./HistoryCard.css";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { rightArrowPoint } from '../../static';
+import { currencyFormater, dateFormater } from '../../utils';
+import './HistoryCard.css';
 
-export const HistoryCard = ({ id, dropoff, createdAt, pickup, total }) => (
+export const HistoryCard = ({
+  id, dropoff, createdAt, pickup, total,
+}) => (
   <Link to={`/details/${id}`} className="HistoryCard">
     <div className="HistoryCard__header">
       {createdAt && <div>{dateFormater(createdAt)}</div>}
@@ -17,8 +19,18 @@ export const HistoryCard = ({ id, dropoff, createdAt, pickup, total }) => (
     </div>
     <div className="HistoryCard__body">
       <div>
-        {pickup && <div>From: {pickup}</div>}
-        {dropoff && <div>To: {dropoff}</div>}
+        {pickup && (
+        <div>
+          From:
+          {pickup}
+        </div>
+        )}
+        {dropoff && (
+        <div>
+          To:
+          {dropoff}
+        </div>
+        )}
       </div>
       <img src={rightArrowPoint} alt="" className="HistoryCard__icon" />
     </div>
@@ -34,8 +46,8 @@ HistoryCard.propTypes = {
 };
 
 HistoryCard.defaultProps = {
-  dropoff: "",
-  createdAt: "",
-  pickup: "",
-  total: "",
+  dropoff: '',
+  createdAt: '',
+  pickup: '',
+  total: '',
 };

@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "./Main.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import './Main.css';
 
 export const Main = ({ children }) => <div className="Main">{children}</div>;
 

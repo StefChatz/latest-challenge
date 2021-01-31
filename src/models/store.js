@@ -1,6 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { historyListReducer } from "./historyList";
-import { rideDetailsReducer } from "./rideDetails";
+import { configureStore } from '@reduxjs/toolkit';
+import { historyListReducer } from './historyList';
+import { rideDetailsReducer } from './rideDetails';
 
 export const store = configureStore({
   reducer: {

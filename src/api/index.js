@@ -1,6 +1,6 @@
-export { client } from "./api";
+export { client } from './api';
 export {
   ridesHistoryUrl,
   rideDetailsUrl,
   commentSubmissionUrl,
-} from "./endpoints";
+} from './endpoints';

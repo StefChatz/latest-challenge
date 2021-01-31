@@ -1,14 +1,14 @@
-export { store } from "./store";
+export { store } from './store';
 
 export {
   historyListReducer,
   fetchHistoryList,
   selectHistory,
-} from "./historyList";
+} from './historyList';
 
 export {
   selectRideDetails,
   fetchRideDetails,
   postComment,
   resetRating,
-} from "./rideDetails";
+} from './rideDetails';

@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
-} from "react-router-dom";
-import { AppLayout, Header, Main } from "../components";
-import { Details, History } from "../views";
-import "./App.css";
+} from 'react-router-dom';
+import { AppLayout, Header, Main } from '../components';
+import { Details, History } from '../views';
+import './App.css';
 
 export const App = () => (
   <AppLayout className="App">

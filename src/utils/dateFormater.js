@@ -1,3 +1,3 @@
-import moment from "moment";
+import moment from 'moment';
 
-export const dateFormater = (date) => moment(date).format("d MMMM YYYY - H:mm");
+export const dateFormater = (date) => moment(date).format('d MMMM YYYY - H:mm');

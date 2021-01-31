@@ -1,2 +1,2 @@
-export { dateFormater } from "./dateFormater";
-export { currencyFormater } from "./currencyFormater";
+export { dateFormater } from './dateFormater';
+export { currencyFormater } from './currencyFormater';
