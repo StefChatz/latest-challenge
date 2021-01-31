@@ -35,8 +35,8 @@ export const DetailsCard = ({
       <div className="DetailsCard__header">{dateFormater(created_at)}</div>
       <div className="DetailsCard__info">
         <div className="DetailsCard__destinations">
-          <div>{pickup}</div>
-          <div>{dropoff}</div>
+          <div>From: {pickup}</div>
+          <div>To: {dropoff}</div>
         </div>
         <div className="DetailsCard__fare">
           <strong>{`Total fare: ${currencyFormater(total)}`}</strong>
@@ -67,7 +67,7 @@ export const DetailsCard = ({
           {isUnderRated && (
             <input
               className="DetailsCard__extra-input"
-              placeholder="Optional Comment"
+              placeholder="Optional comment"
               name="comment"
               ref={register}
             />

@@ -12,11 +12,11 @@
     color: rgb(35, 210, 170);
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
-    padding: 8px;
+    padding: 8px 16px;
 }
 
 .DetailsCard__info{
-    padding: 8px;
+    padding: 16px;
 }
 
 .DetailsCard__map{
@@ -25,7 +25,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    border: 2px solid lightgray;
+    border: 2px solid grey;
     margin-bottom: 16px;
 }
 
@@ -34,15 +34,32 @@
     flex-direction: column;
 }
 
+.DetailsCard__rate-text{
+    margin-left: 6px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
 .DetailsCard__select{
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 8px;
     min-height: 32px;
 }
 
 .DetailsCard__extra-input{
+    background-color: lightgrey;
+    text-align: center;
     min-height: 64px;
 }
 
+.DetailsCard__extra-input:focus{
+    background-color:white;
+}
+
 .DetailsCard__submit{
+    font-weight: bold;
+    font-size: 18px;
     background-color: #000028;
     color: white;
     min-height: 48px;
