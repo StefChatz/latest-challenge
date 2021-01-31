@@ -8,7 +8,7 @@ export const RatingCard = ({ rating: { rating, comment } }) => {
 
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < rating; i++) {
-    stars.push(<img src={star} alt="" className="RatingCard__star" />);
+    stars.push(<img key={i} src={star} alt="" className="RatingCard__star" />);
   }
 
   return (
