@@ -13,12 +13,12 @@ export const DetailsCard = ({
   const dispatch = useDispatch();
   const { register, handleSubmit, watch } = useForm();
   const { status } = useSelector(selectRideDetails);
-  const isAppLoading = status === "loading";
-  console.log("status", isAppLoading);
 
+  const isAppLoading = status === "loading";
   const selectValue = watch("rating");
   const hasSelectedValue = selectValue > 0;
   const isUnderRated = hasSelectedValue && selectValue <= 2;
+
   const onSubmit = (data) => dispatch(postComment(data));
 
   const optionsConfig = {

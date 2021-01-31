@@ -6,7 +6,14 @@
 }
 
 .Details__back{
+    display: flex;
+
     color: #000028;
     text-decoration: unset;
     margin: 10px 0;
+}
+
+.Details__back-icon{
+    height: 24px;
+    margin-right: 12px;
 }

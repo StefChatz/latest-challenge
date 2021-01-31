@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { DetailsCard, RatingCard } from "../../components";
 import { fetchRideDetails, selectRideDetails } from "../../models";
 import "./Details.css";
+import { leftArrow } from "../../static";
 
 export const Details = ({ match }) => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ export const Details = ({ match }) => {
   return (
     <div className="Details">
       <Link to="/" className="Details__back">
+        <img src={leftArrow} alt="" className="Details__back-icon" />
         <strong>Back to history</strong>
       </Link>
       {hasRating ? (
