@@ -52,6 +52,7 @@
 .DetailsCard__select,
 .DetailsCard__extra-input,
 .DetailsCard__submit{
+    box-shadow: 0 0 4px 2px rgba(0, 0, 40, 0.4);
     border: unset;
 }
 
@@ -60,12 +61,12 @@
 .DetailsCard__extra-input,
 .DetailsCard__submit{
     border-radius: 4px;
-
 }
 
 .DetailsCard__destinations,
 .DetailsCard__fare,
 .DetailsCard__select,
-.DetailsCard__extra-input{
+.DetailsCard__extra-input,
+.DetailsCard__rate-text{
     margin-bottom: 8px;
 }

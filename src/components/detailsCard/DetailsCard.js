@@ -43,6 +43,9 @@ export const DetailsCard = ({
           className="DetailsCard__map"
         />
         <form onSubmit={handleSubmit(onSubmit)} className="DetailsCard__form">
+          {hasSelectedValue && (
+            <div className="DetailsCard__rate-text">Rate your driver!</div>
+          )}
           <select
             className="DetailsCard__select"
             name="rating"
