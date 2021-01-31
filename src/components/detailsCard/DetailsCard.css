@@ -21,7 +21,7 @@
 
 .DetailsCard__map{
     height: 100%;
-    min-height: 264px;
+    min-height: 244px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -103,4 +103,10 @@
 .DetailsCard__extra-input,
 .DetailsCard__rate-text{
     margin-bottom: 8px;
+}
+
+@media only screen and (max-width: 600px) {
+    .DetailsCard__map{
+        min-height: 150px;
+    }
 }
