@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { Link } from "react-router-dom";
+import { rightArrowPoint } from "../../static";
 import { currencyFormater, dateFormater } from "../../utils";
 import "./HistoryCard.css";
 
@@ -15,8 +16,11 @@ export const HistoryCard = ({ id, dropoff, createdAt, pickup, total }) => (
       )}
     </div>
     <div className="HistoryCard__body">
-      {pickup && <div>{pickup}</div>}
-      {dropoff && <div>{dropoff}</div>}
+      <div>
+        {pickup && <div>{pickup}</div>}
+        {dropoff && <div>{dropoff}</div>}
+      </div>
+      <img src={rightArrowPoint} alt="" className="HistoryCard__icon" />
     </div>
   </Link>
 );
