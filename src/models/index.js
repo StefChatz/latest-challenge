@@ -10,4 +10,5 @@ export {
   selectRideDetails,
   fetchRideDetails,
   postComment,
+  resetRating,
 } from "./rideDetails";

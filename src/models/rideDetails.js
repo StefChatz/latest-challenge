@@ -20,10 +20,14 @@ export const postComment = createAsyncThunk(
     await client.post(commentSubmissionUrl, { rating, comment })
 );
 
-const { reducer } = createSlice({
+const { reducer, actions } = createSlice({
   name: "rideDetails",
   initialState,
-  reducers: {},
+  reducers: {
+    resetRating(state) {
+      state.rating = {};
+    },
+  },
   extraReducers: {
     [fetchRideDetails.pending]: (state) => {
       state.status = "loading";
@@ -53,6 +57,7 @@ const { reducer } = createSlice({
   },
 });
 
+export const { resetRating } = actions;
 export const selectRideDetails = (state) => state.details;
 
 export { reducer as rideDetailsReducer };

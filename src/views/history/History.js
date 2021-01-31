@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import { useDispatch, useSelector } from "react-redux";
 import { HistoryCard } from "../../components";
-import { fetchHistoryList, selectHistory } from "../../models";
+import { fetchHistoryList, resetRating, selectHistory } from "../../models";
 
 export const History = () => {
   const dispatch = useDispatch();
@@ -15,6 +15,10 @@ export const History = () => {
   const fetchMoreData = () => {
     dispatch(fetchHistoryList({ pageNumber, pageItemsLimit: 10 }));
   };
+
+  useEffect(() => {
+    dispatch(resetRating());
+  });
 
   return (
     <InfiniteScroll
