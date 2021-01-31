@@ -12,7 +12,9 @@ const initialState = {
 
 export const fetchHistoryList = createAsyncThunk(
   'historyList/fetchHistoryList',
-  async ({ pageNumber, pageItemsLimit }) => await client.get(ridesHistoryUrl(pageNumber, pageItemsLimit)),
+  async ({ pageNumber, pageItemsLimit }) => await client.get(
+    ridesHistoryUrl(pageNumber, pageItemsLimit),
+  ),
 );
 
 const { reducer } = createSlice({

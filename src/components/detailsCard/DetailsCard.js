@@ -38,11 +38,11 @@ export const DetailsCard = ({
       <div className="DetailsCard__info">
         <div className="DetailsCard__destinations">
           <div>
-            From:
+            <strong>From: &nbsp;</strong>
             {pickup}
           </div>
           <div>
-            To:
+            <strong>To: &nbsp;</strong>
             {dropoff}
           </div>
         </div>

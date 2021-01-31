@@ -21,13 +21,13 @@ export const HistoryCard = ({
       <div>
         {pickup && (
         <div>
-          From:
+          <strong>From: &nbsp;</strong>
           {pickup}
         </div>
         )}
         {dropoff && (
         <div>
-          To:
+          <strong>To: &nbsp;</strong>
           {dropoff}
         </div>
         )}
