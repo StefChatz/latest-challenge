@@ -48,6 +48,9 @@
     min-height: 48px;
     margin: 4px 0;
 }
+.DetailsCard__submit:disabled{
+    opacity: 0.4;
+}
 
 .DetailsCard__select,
 .DetailsCard__extra-input,

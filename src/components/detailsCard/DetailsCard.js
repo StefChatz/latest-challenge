@@ -2,8 +2,8 @@ import { map as _map } from "lodash-es";
 import PropTypes from "prop-types";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { postComment } from "../../models";
+import { useDispatch, useSelector } from "react-redux";
+import { postComment, selectRideDetails } from "../../models";
 import { currencyFormater, dateFormater } from "../../utils";
 import "./DetailsCard.css";
 
@@ -12,6 +12,9 @@ export const DetailsCard = ({
 }) => {
   const dispatch = useDispatch();
   const { register, handleSubmit, watch } = useForm();
+  const { status } = useSelector(selectRideDetails);
+  const isAppLoading = status === "loading";
+  console.log("status", isAppLoading);
 
   const selectValue = watch("rating");
   const hasSelectedValue = selectValue > 0;
@@ -72,7 +75,7 @@ export const DetailsCard = ({
           <input
             className="DetailsCard__submit"
             type="submit"
-            disabled={!hasSelectedValue}
+            disabled={!hasSelectedValue || isAppLoading}
           />
         </form>
       </div>
